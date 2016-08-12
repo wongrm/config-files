@@ -52,21 +52,11 @@ noremap <F2> o<cfdump var='##' top=3/><CR><cfabort /><ESC>kf#a
 noremap <F3> o<cfdump var='##' top=3/><ESC>F#i
 noremap <F4> I<!---<SPACE><ESC>A<SPACE>---!><ESC>:nohl<CR>
 noremap <F5> :s/<!---\s//<CR>:s/\s--->//<CR>:nohl<CR>
-set smartindent 
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
-noremap <C-v> "+p
-noremap <F2> o<cfdump var='##' /><CR><cfabort /><ESC>kf#a
-noremap <F3> o<cfdump var='##' /><ESC>F#i
-noremap <F4> I<!---<SPACE><ESC>A<SPACE>---><ESC>
-noremap <F5> :s/<!---\s//<CR>:s/\s--->//<CR>
 
 let mapleader = ","
 
 let g:fuzzy_matching_limit=20
 let g:fuzzy_ceiling=2000
 let g:fuzzy_ignore="vendor/*;*.jpg;*.gif"
-set dict+="~/.vim/dic/CF.dict"
-silent sv ~/.vim/dic/CF.dict
 set showcmd
 set hlsearch
