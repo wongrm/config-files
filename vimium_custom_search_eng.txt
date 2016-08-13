@@ -1,6 +1,7 @@
 w: http://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
 rm: http://pacdev2.ncr.pwgsc.gc.ca/issues/%s Redmine
 iw https://infowiki.tpsgc-pwgsc.gc.ca/dosearchsite.action?queryString=%s Infowiki
+y: http://www.youtube.com/results?search_query=%s Youtube
 g: http://www.google.com/search?q=%s Google
 
 # More examples.
@@ -9,7 +10,6 @@ g: http://www.google.com/search?q=%s Google
 # above, and for these.)
 #
 # l: http://www.google.com/search?q=%s&btnI I'm feeling lucky...
-# y: http://www.youtube.com/results?search_query=%s Youtube
 # gm: https://www.google.com/maps?q=%s Google maps
 # b: https://www.bing.com/search?q=%s Bing
 # d: https://duckduckgo.com/?q=%s DuckDuckGo
