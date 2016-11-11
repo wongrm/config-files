@@ -1,7 +1,7 @@
 w: http://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia
 rm: http://pacdev2.ncr.pwgsc.gc.ca/issues/%s Redmine
 iw https://infowiki.tpsgc-pwgsc.gc.ca/dosearchsite.action?queryString=%s Infowiki
-y: http://www.youtube.com/results?search_query=%s Youtube
+yt: http://www.youtube.com/results?search_query=%s Youtube
 g: http://www.google.com/search?q=%s Google
 
 # More examples.
