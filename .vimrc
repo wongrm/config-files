@@ -1,5 +1,7 @@
+set nobackup
+set nowritebackup
+set noswapfile
 set smartindent 
-set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
 set nohlsearch
 set hidden
@@ -18,7 +20,7 @@ set scrolloff=3
 set ruler
 set backspace=indent,eol,start
 set incsearch
-set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:>-,trail:Â·,eol:$
 set shortmess=atI
 set visualbell
 set confirm
@@ -60,3 +62,12 @@ let g:fuzzy_ceiling=2000
 let g:fuzzy_ignore="vendor/*;*.jpg;*.gif"
 set showcmd
 set hlsearch
+
+
+"press <leader>t to jump to previous tab
+"let g:lasttab = 1
+"nmap <leader>t1 :exe "tabn ".g:lasttab<CR>
+"au TabLeave * let g:lasttab = tabpagenr()
+
+"press <leader>t to jump to previous tab
+:nnoremap <F1> :buffers<CR>:buffer<Space>
