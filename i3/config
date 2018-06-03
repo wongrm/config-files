@@ -158,4 +158,4 @@ bar {
 
 bindsym $sup+l exec i3lock
 exec google-chrome
-#bindsym $mod+ctrl+del  i
+bindsym $mod+Control+Delete exec lxtask
