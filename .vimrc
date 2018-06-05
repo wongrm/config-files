@@ -30,6 +30,7 @@ syntax on
 set number
 
 nmap <silent> <leader>s :set nolist!<CR>
+noremap <C-b> <C-y>
 noremap <C-n> gt
 noremap <C-p> gT
 noremap <C-q> :bn <bar> bw #<CR>
