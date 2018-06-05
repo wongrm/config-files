@@ -1,4 +1,0 @@
-# Insert your preferred key mappings here.
-map ' Marks.activateGotoMode
-map <a-e> scrollUp
-map <c-1> g0
