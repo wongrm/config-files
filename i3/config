@@ -162,3 +162,5 @@ exec google-chrome
 bindsym $mod+Control+Delete exec lxtask
 bindsym $sup+e exec nautilus
 exec --no-startup-id nm-applet
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
