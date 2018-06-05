@@ -9,7 +9,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\n\nmap m Marks.activateCreateMode swap\nmap ' Marks.activateGotoMode swap\nmap R reload hard\nmap <c-b> scrollUp",
+  "keyMappings": "# Insert your preferred key mappings here.\n\nmap m Marks.activateCreateMode swap\nmap ' Marks.activateGotoMode swap\nmap R reload hard\nmap <c-b> scrollUp\nmap o Vomnibar.activateInNewTab\nmap O Vomnibar.activate",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "pages/blank.html",
