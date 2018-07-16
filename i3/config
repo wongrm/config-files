@@ -167,3 +167,4 @@ bindsym $sup+e exec nautilus
 exec --no-startup-id nm-applet
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Shift+x exec shutdown -h now
