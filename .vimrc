@@ -38,6 +38,7 @@ noremap <C-s> :w!<CR>
 noremap <C-g> :Ack<space>
 noremap <C-x> :BufOnly<CR>
 inoremap <C-s> <Esc>:w!<CR>
+inoremap jk <Esc>
 noremap <C-c> :let @+=@"<CR>
 noremap <C-v> "+p
 nnoremap ' `
