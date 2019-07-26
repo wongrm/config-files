@@ -21,7 +21,8 @@ set ruler
 set backspace=indent,eol,start
 set incsearch
 set listchars=tab:>-,trail:·,eol:$
-set shortmess=atI
+set shortmess=a
+set cmdheight=2
 set visualbell
 set confirm
 set viminfo='20,<50,s10,h,%
