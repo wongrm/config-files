@@ -181,3 +181,6 @@ bindsym $mod+Shift+a exec mono /usr/lib/keepass2/KeePass.exe --auto-type
 
 #polybar
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
+
+# Desktop background
+exec_always --no-startup-id feh --bg-scale ~/config-files/space.png
