@@ -19,10 +19,13 @@ font-2 = Termsynu:size=8:antialias=false;-2
 font-3 =  FontAwesome:style=Regular:pixelsize=15;0
 
 ;modules-left = powermenu
+modules-left = computer-name
 
 ;modules-right = volume backlight wireless-network wired-network battery date
 modules-right = volume wireless-network battery date
-tray-position = right
+
+# Attempt at system tray
+#tray-position = right
 #wm-restack = i3
 #override-redirect = true
 #offset-y = 30%
@@ -51,9 +54,18 @@ font-2 = FontAwesome:size=8;-2
 font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
+font-6 =  FontAwesome:style=Regular:pixelsize=20;0
 
 modules-left = i3
-modules-right = cpu memory
+modules-right = temperature cpu memory
+
+tray-position = right
+tray-padding = 2
+
+[module/computer-name]
+type = custom/text
+content-font = 4
+content =  Zuko
 
 [module/backlight]
 type = internal/xbacklight
@@ -110,62 +122,26 @@ animation-charging-framerate = 750
 
 [module/i3]
 type = internal/i3
-
-ws-icon-0 = term;
-ws-icon-1 = web;
-ws-icon-2 = code;
-ws-icon-3 = music;
-ws-icon-4 = irssi;
-ws-icon-default = 
-
 format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
 
-label-dimmed-underline = ${BAR.background}
+label-focused = %index%
+label-focused-padding = 2
 
-label-active = %icon%
-label-active-foreground = #fff
-label-active-background = #773f3f3f
-label-active-underline = #c9665e
-label-active-font = 4
-label-active-padding = 4
+label-unfocused = %index%
+label-unfocused-padding = ${self.label-focused-padding}
 
-label-occupied = %icon%
-label-occupied-foreground = #dd
-label-occupied-underline = #666
-label-occupied-font = 4
-label-occupied-padding = 4
-
-label-urgent = %icon%
-label-urgent-foreground = #000000
+label-urgent = %index%!
 label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
+label-urgent-padding = ${self.label-focused-padding}
 
-label-empty = %icon%
-label-empty-foreground = #55
-label-empty-font = 4
-label-empty-padding = 4
+label-visible = %index%
+label-visible-padding = ${self.label-focused-padding}
 
-label-monocle = 
-label-monocle-underline = ${module/bspwm.label-active-underline}
-label-monocle-background = #33ffffff
-label-monocle-padding = 2
-
-label-locked = 
-label-locked-foreground = #bd2c40
-label-locked-underline = ${module/bspwm.label-monocle-underline}
-label-locked-padding = ${module/bspwm.label-monocle-padding}
-
-label-sticky = 
-label-sticky-foreground = #fba922
-label-sticky-underline = ${module/bspwm.label-monocle-underline}
-label-sticky-padding = ${module/bspwm.label-monocle-padding}
-
-label-private = 
-label-private-foreground = #bd2c40
-label-private-underline = ${module/bspwm.label-monocle-underline}
-label-private-padding = ${module/bspwm.label-monocle-padding}
+label-mode-padding = ${self.label-focused-padding}
+label-mode-foreground = #000
+label-mode-background = #ffb52a
 
 [module/bspwm-tmp]
 type = internal/bspwm
@@ -208,6 +184,18 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <label>
+format-warn = <label-warn>
+
+label = TEMP %temperature-c%
+label-warn = TEMP %temperature-c%
+label-warn-foreground = #aaff77
 
 [module/date]
 type = internal/date
@@ -299,7 +287,7 @@ headphone-mixer = Headphone
 headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
-label-muted =   muted
+label-muted =  muted
 label-muted-foreground = #66
 
 ramp-volume-0 = 
