@@ -63,9 +63,12 @@ tray-position = right
 tray-padding = 2
 
 [module/computer-name]
-type = custom/text
-content-font = 4
-content =  Zuko
+type = custom/script
+internval = 256
+format-prefix = "  "
+format-prefix-font = 4
+format-padding = 1
+exec = echo "$(uname -n)"
 
 [module/backlight]
 type = internal/xbacklight
