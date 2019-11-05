@@ -163,7 +163,8 @@ bindsym $mod+r mode "resize"
 #}
 
 bindsym $sup+l exec i3lock
-exec google-chrome
+exec --no-startup-id i3-msg 'workspace 2; exec google-chrome; workspace 2'
+exec --no-startup-id i3-msg 'workspace 2; exec lutris'
 bindsym $mod+Control+Delete exec lxtask
 bindsym $sup+e exec nautilus
 exec --no-startup-id nm-applet
