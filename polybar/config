@@ -16,7 +16,8 @@ module-margin = 1
 font-0 = Noto Sans Mono:style=Regularsize=8;-1
 font-1 = Material Design Icons:style=Regular:size=10;0
 font-2 = Termsynu:size=8:antialias=false;-2
-font-3 =  FontAwesome:style=Regular:pixelsize=15;0
+font-3 =  Font Awesome 5 Brands:style=Regular:pixelsize=15;0
+font-4 =  Font Awesome 5 Free:style=Solid:pixelsize=15;0
 
 ;modules-left = powermenu
 modules-left = computer-name
@@ -50,22 +51,43 @@ module-margin-right = 6
 
 font-0 = NotoSans-Regular:size=8;0
 font-1 = unifont:size=6;-3
-font-2 = FontAwesome:size=8;-2
+font-2 = Font Awesome 5 Free:style=Regular:size=8;-2
 font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
-font-6 =  FontAwesome:style=Regular:pixelsize=20;0
+font-6 =  Font Awesome 5 Free:style=Solid:pixelsize=20;0
 
 modules-left = i3
-modules-right = temperature cpu memory
+;modules-right = temperature cpu memory
+modules-right = filesystem temperature cpu memory
 
 tray-position = right
 tray-padding = 2
 
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+format-mounted = <label-mounted>
+label-mounted = Disk space: %percentage_free%% free of %total%
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+spacing = 4
+
 [module/computer-name]
 type = custom/script
 internval = 256
-format-prefix = "  "
+format-prefix = " "
 format-prefix-font = 4
 format-padding = 1
 exec = echo "$(uname -n)"
@@ -200,9 +222,11 @@ label = TEMP %temperature-c%
 label-warn = TEMP %temperature-c%
 label-warn-foreground = #aaff77
 
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+
 [module/date]
 type = internal/date
-date = %{T4}    %{T-}%%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+date = %{T4}    %{T-}%%{F#ccffffff}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
 [module/memory]
@@ -218,9 +242,9 @@ bar-used-foreground-3 = #ff5555
 bar-used-indicator = |
 bar-used-indicator-font = 6
 bar-used-indicator-foreground = #ff
-bar-used-fill = ─
+bar-used-fill = -
 bar-used-fill-font = 6
-bar-used-empty = ─
+bar-used-empty = -
 bar-used-empty-font = 6
 bar-used-empty-foreground = #444444
 
@@ -253,7 +277,7 @@ bar-progress-empty-foreground = #44
 
 [module/wireless-network]
 type = internal/network
-interface = wlp3s0
+interface = wlan0
 interval = 3.0
 ping-interval = 10
 
