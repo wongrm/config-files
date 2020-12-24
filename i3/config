@@ -158,33 +158,36 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+        #status_command i3status
+#}
 
 bindsym $sup+l exec i3lock
 exec --no-startup-id i3-msg 'workspace 2; exec chromium; workspace 2'
 #exec --no-startup-id i3-msg 'workspace 2; exec lutris'
 bindsym $mod+Control+Delete exec lxtask
-bindsym $sup+e exec nautilus
-exec --no-startup-id nm-applet
+bindsym $sup+e exec alacritty -e ranger
+#exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
+exec --no-startup-id udiskie
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Shift+x exec shutdown -h now
 
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # KeePass autotype
 #bindsym $mod+Shift+a exec mono /usr/lib/keepass2/KeePass.exe --auto-type
 
 #polybar
-#exec_always --no-startup-id ~/.config/i3/polybar.sh &
+exec_always --no-startup-id ~/.config/i3/polybar.sh &
 
 # Desktop background
-#exec_always --no-startup-id feh --bg-scale ~/config-files/space.png
+exec_always --no-startup-id feh --bg-scale ~/config-files/space.png
 
 # Compton
 #exec_always --no-startup-id compton --config ~/.config/.compton.conf -b
+exec_always --no-startup-id picom -b
