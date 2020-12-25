@@ -192,9 +192,15 @@ mode "Exit (S)uspend, (R)eboot, (P)oweroff" {
 bindsym $mod+Shift+x mode "Exit (S)uspend, (R)eboot, (P)oweroff" 
 
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#increase/decrease sound volume by five
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+
+#increase/decrease sound volume by one
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
+
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # KeePass autotype
 #bindsym $mod+Shift+a exec mono /usr/lib/keepass2/KeePass.exe --auto-type
@@ -205,12 +211,12 @@ exec_always --no-startup-id ~/.config/i3/polybar.sh &
 # Desktop background
 exec_always --no-startup-id feh --bg-scale ~/config-files/space.png
 
-# Compton
+# Compositor
 #exec_always --no-startup-id picom --config ~/.config/picom.conf -b
 exec_always --no-startup-id picom --config ~/.config/picom.conf -b
 
 # Gaps
-#for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 0
 
 smart_gaps on
 smart_borders on
