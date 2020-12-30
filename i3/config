@@ -174,7 +174,7 @@ bindsym $mod+r mode "resize"
 #}
 
 bindsym $sup+l exec i3lock
-exec --no-startup-id i3-msg 'workspace 2; exec chromium; workspace 2'
+exec --no-startup-id i3-msg 'exec chromium'
 #exec --no-startup-id i3-msg 'workspace 2; exec lutris'
 #bindsym $mod+Control+Delete exec lxtask
 bindsym $sup+e exec alacritty -e ranger
