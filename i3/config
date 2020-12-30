@@ -173,7 +173,7 @@ bindsym $mod+r mode "resize"
         #status_command i3status
 #}
 
-bindsym $sup+l exec i3lock
+bindsym $sup+l exec ~/.config/i3/i3lock-solarized-dark.sh
 exec --no-startup-id i3-msg 'exec chromium'
 #exec --no-startup-id i3-msg 'workspace 2; exec lutris'
 #bindsym $mod+Control+Delete exec lxtask
@@ -181,18 +181,21 @@ bindsym $sup+e exec alacritty -e ranger
 #exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 #exec --no-startup-id pasystray
+#bindsym $mod+Tab exec --no-startup-id rofi -modi combi -combi-modi window -show combi
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 #bindsym $mod+Shift+x exec shutdown -h now
 
 # Create Log out, Reboot, Poweroff bindings
-mode "Exit (S)uspend, (R)eboot, (P)oweroff" {
+mode "Exit (L)ock, (S)uspend, (R)eboot, (P)oweroff" {
   bindsym $mod+r exec systemctl reboot
-  bindsym $mod+s mode "default"; exec systemctl suspend
+  bindsym $mod+s mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh; exec systemctl suspend
+  bindsym $mod+l mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh
   bindsym $mod+x exec systemctl poweroff
 
   bindsym r exec systemctl reboot
-  bindsym s mode "default"; exec systemctl suspend
+  bindsym s mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh; exec systemctl suspend
+  bindsym l mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh
   bindsym x exec systemctl poweroff
 
   # back to normal: Escape
@@ -200,16 +203,16 @@ mode "Exit (S)uspend, (R)eboot, (P)oweroff" {
   bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+x mode "Exit (S)uspend, (R)eboot, (P)oweroff" 
+bindsym $mod+Shift+x mode "Exit (L)ock, (S)uspend, (R)eboot, (P)oweroff"
 
 # Pulse Audio controls
 #increase/decrease sound volume by five
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5%
 
 #increase/decrease sound volume by one
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +1%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -1%
 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
