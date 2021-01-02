@@ -1,0 +1,10 @@
+#!/bin/bash
+#level=$1
+mode_level=$1
+sink_info=$(pactl list sinks short)
+sink_number="${sink_info:0:1}"
+if [[ $mode_level = "mute" ]]; then
+  pactl set-sink-mute $sink_number toggle
+else
+  pactl set-sink-volume $sink_number $mode_level%
+fi
