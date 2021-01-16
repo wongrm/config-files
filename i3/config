@@ -12,6 +12,9 @@
 set $mod Mod1
 set $sup Mod4
 
+#set $i3lock ~/.config/i3/i3lock-solarized-dark.sh
+set $volumectl ~/.config/i3/volumectl.sh
+set $i3lock ~/.config/i3/i3lock-arc-dark.sh
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
@@ -173,7 +176,7 @@ bindsym $mod+r mode "resize"
         #status_command i3status
 #}
 
-bindsym $sup+l exec ~/.config/i3/i3lock-solarized-dark.sh
+bindsym $sup+l exec $i3lock
 exec --no-startup-id i3-msg 'exec chromium'
 #exec --no-startup-id i3-msg 'workspace 2; exec lutris'
 #bindsym $mod+Control+Delete exec lxtask
@@ -184,18 +187,18 @@ exec --no-startup-id blueman-applet
 #bindsym $mod+Tab exec --no-startup-id rofi -modi combi -combi-modi window -show combi
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
-#bindsym $mod+Shift+x exec shutdown -h now
+bindsym $mod+Shift+x mode "Exit (L)ock, (S)uspend, (R)eboot, (P)oweroff"
 
 # Create Log out, Reboot, Poweroff bindings
 mode "Exit (L)ock, (S)uspend, (R)eboot, (P)oweroff" {
   bindsym $mod+r exec systemctl reboot
-  bindsym $mod+s mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh; exec systemctl suspend
-  bindsym $mod+l mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh
+  bindsym $mod+s mode "default"; exec $i3lock; exec systemctl suspend
+  bindsym $mod+l mode "default"; exec $i3lock
   bindsym $mod+x exec systemctl poweroff
 
   bindsym r exec systemctl reboot
-  bindsym s mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh; exec systemctl suspend
-  bindsym l mode "default"; exec ~/.config/i3/i3lock-solarized-dark.sh
+  bindsym s mode "default"; exec $i3lock; exec systemctl suspend
+  bindsym l mode "default"; exec $i3lock
   bindsym x exec systemctl poweroff
 
   # back to normal: Escape
@@ -203,18 +206,25 @@ mode "Exit (L)ock, (S)uspend, (R)eboot, (P)oweroff" {
   bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+x mode "Exit (L)ock, (S)uspend, (R)eboot, (P)oweroff"
 
 # Pulse Audio controls
 #increase/decrease sound volume by five
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volumectl volume +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id $volumectl volume -5%
 
 #increase/decrease sound volume by one
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +1%
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -1%
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id $volumectl volume +1%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id $volumectl volume -1%
 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMute exec --no-startup-id $volumectl mute toggle
+
+#resync bluetooth audio
+bindsym Shift+XF86AudioMute exec --no-startup-id ~/.config/i3/sync_bt_audio.sh
+
+bindsym XF86AudioPlay exec lutris lutris:rungameid/1
+bindsym XF86AudioStop exec steam-runtime %U
+#bindsym XF86AudioNext exec --no-startup-id playerctl next
+#bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # KeePass autotype
 bindsym $mod+Shift+a exec mono /usr/share/keepass/KeePass.exe --auto-type
