@@ -1,3 +1,5 @@
+set clipboard=unnamedplus
+
 set nobackup
 set nowritebackup
 set noswapfile
@@ -28,6 +30,7 @@ set confirm
 set viminfo='20,<50,s10,h,%
 syntax on 
 "colorscheme matrix 
+"hi Search cterm=reverse gui=reverse
 set number
 
 nmap <silent> <leader>s :set nolist!<CR>
